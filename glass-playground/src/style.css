@@ -75,7 +75,6 @@ details { margin-top: 20px; border-top: 1px solid #354139; padding-top: 16px; co
   .workbench { grid-template-columns: 1fr; min-height: auto; border-radius: 18px; overflow: visible; }
   .stage { min-height: 62svh; border-radius: 18px 18px 0 0; overflow: hidden; padding: 28px 20px 46px; }
   .controls { border-left: 0; border-top: 1px solid #354139; border-radius: 0 0 18px 18px; }
-  .glass { --slice-overhang: min(calc(var(--slice) * .24), 36px); }
 }
 
 @media (prefers-reduced-motion: reduce) { .glass { transition: none; transform: none; }.reflection { will-change: auto; } }

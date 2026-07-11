@@ -17,8 +17,7 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 
 function availableSize() {
   const bounds = stage.getBoundingClientRect()
-  const mobile = window.innerWidth <= 860
-  const overhang = Math.min(Number(sliceRange.value) * (mobile ? 0.24 : 0.39), mobile ? 36 : 58)
+  const overhang = Math.min(Number(sliceRange.value) * 0.39, 58)
   return {
     width: Math.max(minimum.width, bounds.width - 32 - overhang * 2),
     height: Math.max(minimum.height, bounds.height - 32 - overhang * 2),
