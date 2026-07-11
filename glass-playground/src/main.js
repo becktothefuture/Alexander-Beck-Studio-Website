@@ -9,7 +9,7 @@ const sliceValue = document.querySelector('#sliceValue')
 const shineValue = document.querySelector('#shineValue')
 
 const defaults = { width: 680, height: 460, slice: 148, shine: 72 }
-const minimum = { width: 280, height: 240 }
+const minimum = { width: 240, height: 220 }
 let size = { width: defaults.width, height: defaults.height }
 let frame = 0
 
@@ -17,9 +17,11 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
 
 function availableSize() {
   const bounds = stage.getBoundingClientRect()
+  const mobile = window.innerWidth <= 860
+  const overhang = Math.min(Number(sliceRange.value) * (mobile ? 0.24 : 0.39), mobile ? 36 : 58)
   return {
-    width: Math.max(minimum.width, bounds.width - 32),
-    height: Math.max(minimum.height, bounds.height - 32),
+    width: Math.max(minimum.width, bounds.width - 32 - overhang * 2),
+    height: Math.max(minimum.height, bounds.height - 32 - overhang * 2),
   }
 }
 
@@ -100,6 +102,7 @@ document.querySelectorAll('[data-layer]').forEach((control) => {
 sliceRange.addEventListener('input', () => {
   glass.style.setProperty('--slice', `${sliceRange.value}px`)
   sliceValue.value = `${sliceRange.value} px`
+  renderSize()
 })
 
 shineRange.addEventListener('input', () => {
