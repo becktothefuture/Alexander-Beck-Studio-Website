@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#111513" />
+    <meta name="description" content="An interactive nine-slice glass material playground extracted from the Alexander Beck Studio website." />
+    <title>Glass cover playground</title>
+  </head>
+  <body>
+    <main class="app">
+      <header class="intro">
+        <div>
+          <p class="eyebrow">Material study 01</p>
+          <h1>Glass cover playground</h1>
+        </div>
+        <p class="lede">Drag the glass by its edges or corner. Move your pointer across it to catch the light.</p>
+      </header>
+
+      <section class="workbench" aria-label="Resizable glass experiment">
+        <div class="stage" id="stage">
+          <div class="glass hide-scratches" id="glass" style="--glass-width: 680px; --glass-height: 460px; --slice: 148px;">
+            <div class="scene" aria-hidden="true">
+              <div class="scene-grid"></div>
+              <div class="scene-copy">
+                <span>ABS / OPTICAL MATERIAL</span>
+                <strong>REFRACTIVE<br />SURFACE</strong>
+                <span>Move pointer to relight</span>
+              </div>
+              <i class="orb orb-a"></i><i class="orb orb-b"></i><i class="orb orb-c"></i>
+            </div>
+
+            <div class="nine-slice" aria-hidden="true">
+              <img class="s1" src="./images/glass-1.webp" alt="" draggable="false" />
+              <img class="s2" src="./images/glass-2.webp" alt="" draggable="false" />
+              <img class="s3" src="./images/glass-3.webp" alt="" draggable="false" />
+              <img class="s5" src="./images/glass-5.webp" alt="" draggable="false" />
+              <img class="s4" src="./images/glass-4.webp" alt="" draggable="false" />
+              <img class="s6" src="./images/glass-6.webp" alt="" draggable="false" />
+              <img class="s7" src="./images/glass-7.webp" alt="" draggable="false" />
+              <img class="s8" src="./images/glass-8.webp" alt="" draggable="false" />
+              <img class="s9" src="./images/glass-9.webp" alt="" draggable="false" />
+            </div>
+            <div class="scratches" aria-hidden="true"></div>
+            <div class="reflection" aria-hidden="true"></div>
+            <div class="inner-edge" aria-hidden="true"></div>
+
+            <button class="resize-handle resize-e" data-axis="x" aria-label="Resize glass width"></button>
+            <button class="resize-handle resize-s" data-axis="y" aria-label="Resize glass height"></button>
+            <button class="resize-handle resize-se" data-axis="xy" aria-label="Resize glass width and height"></button>
+            <output class="dimensions" id="dimensions">680 × 460</output>
+          </div>
+        </div>
+
+        <aside class="controls" aria-label="Glass layer controls">
+          <div class="control-heading">
+            <div><span>Layers</span><strong>Deconstruct the effect</strong></div>
+            <button class="text-button" id="reset" type="button">Reset</button>
+          </div>
+          <label class="toggle"><span><strong>Glass slices</strong><small>The essential photographed material</small></span><input type="checkbox" data-layer="slices" checked /></label>
+          <label class="toggle"><span><strong>Moving reflection</strong><small>Pointer-reactive highlight and tint</small></span><input type="checkbox" data-layer="reflection" checked /></label>
+          <label class="toggle"><span><strong>Surface wear</strong><small>Optional low-resolution scratch map</small></span><input type="checkbox" data-layer="scratches" /></label>
+          <label class="toggle"><span><strong>Scene behind glass</strong><small>Depth cues that reveal transparency</small></span><input type="checkbox" data-layer="scene" checked /></label>
+          <label class="toggle"><span><strong>Safety clip</strong><small>Clips dynamic layers; corners remain in the images</small></span><input type="checkbox" data-layer="clip" checked /></label>
+
+          <label class="range"><span><strong>Frame scale</strong><output id="sliceValue">148 px</output></span><input id="sliceRange" type="range" min="72" max="220" value="148" /></label>
+          <label class="range"><span><strong>Reflection</strong><output id="shineValue">72%</output></span><input id="shineRange" type="range" min="0" max="100" value="72" /></label>
+
+          <details>
+            <summary>Why it looks real</summary>
+            <p>Nine alpha-masked photographs preserve irregular highlights, soft dirt, dark edge falloff, fittings and asymmetry. The centre and edges stretch while the four photographed corners keep their shape. A cheap compositor-only reflection adds a light cue without canvas or WebGL.</p>
+          </details>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
